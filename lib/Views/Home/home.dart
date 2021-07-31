@@ -37,60 +37,54 @@ class Home extends StatelessWidget {
 
         Scaffold(
           backgroundColor: Colors.transparent,
-          body: Column(
-            children: <Widget>[
+          body: Center(
+            child: Column(
+              children: <Widget>[
 
-              Padding(
-                  padding: EdgeInsets.only(left: 10, right: 20, top: 150,bottom:20),
+                Container(
+                  margin: EdgeInsets.only(top:MediaQuery.of(context).size.height*0.6),
+                  width: 350,
+                  height: 50,
                   child:
-                  Container(
-                    margin: EdgeInsets.only(top:MediaQuery.of(context).size.height*0.6),
-                    width: 350,
-                    height: 50,
-                    child:
-                    RaisedButton(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40),),
-                      child: Text(
-                          'LogIn',
-                          style:TextStyle(
-                              color: Colors.blue[900],
-                              fontWeight: FontWeight.w800,
-                              fontSize: 20
-                          )),
-                      onPressed: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LogIn()));
-                      },
-                    ),
-                  )
-              ),
-              Padding(
-                  padding: EdgeInsets.only(left: 10, right: 20, top: 5,bottom:30),
+                  RaisedButton(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),),
+                    child: Text(
+                        'LogIn',
+                        style:TextStyle(
+                            color: Colors.blue[900],
+                            fontWeight: FontWeight.w800,
+                            fontSize: 20
+                        )),
+                    onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LogIn()));
+                    },
+                  ),
+                ),
+                Container(
+                  width: 350,
+                  height: 50,
                   child:
-                  Container(
-                    width: 350,
-                    height: 50,
-                    child:
-                    RaisedButton(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40),
-                        side: BorderSide(color: Colors.white,width:0.5),),
-                      child: Text(
-                          'Sign Up',
-                          style:TextStyle(
-                              color: Colors.blue[900],
-                              fontWeight: FontWeight.w800,
-                              fontSize: 20
-                          )),
-                      onPressed: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp()));
-                      },
-                    ),
-                  )
-              )
-            ],
+                  RaisedButton(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                      side: BorderSide(color: Colors.white,width:0.5),),
+                    child: Text(
+                        'Sign Up',
+                        style:TextStyle(
+                            color: Colors.blue[900],
+                            fontWeight: FontWeight.w800,
+                            fontSize: 20
+                        )),
+                    onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUp()));
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         ),
 
