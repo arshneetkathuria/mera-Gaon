@@ -9,6 +9,9 @@ import 'package:govt_survey/Views/WidgetComponents/Components.dart';
 import 'Tradition.dart';
 
 class VillageDetail extends StatefulWidget {
+  final String villageId;
+  VillageDetail({Key key, @required this.villageId}) : super(key: key);
+
 
   @override
   _VillageDetailState createState() => _VillageDetailState();
@@ -17,6 +20,7 @@ class VillageDetail extends StatefulWidget {
 class _VillageDetailState extends State<VillageDetail> {
   // final name_of_village = TextEditingController();
   // final history_of_village = TextEditingController();
+
   final int maxLine = 50;
    // List<Map<String,dynamic>> _villageDetail;
   Map<String,dynamic> _villageDetail={};

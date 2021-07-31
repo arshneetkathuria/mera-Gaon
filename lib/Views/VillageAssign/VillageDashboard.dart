@@ -58,7 +58,6 @@ class _VillageDashboardState extends State<VillageDashboard> {
                         fontSize: 20),
                   ),
                 )),
-
           ],
         ),
         appBar: AppBar(
@@ -84,8 +83,7 @@ class _VillageDashboardState extends State<VillageDashboard> {
                   List villagesList = snapshot.data as List;
                   //Map v = snapshot.data as Map;
                   villagesList.forEach((value) {
-
-                    villages.add( jsonEncode(value));
+                    villages.add(jsonEncode(value));
                   });
                   return GridView.builder(
                       shrinkWrap: true,
@@ -100,7 +98,9 @@ class _VillageDashboardState extends State<VillageDashboard> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => VillageDetail()));
+                                    builder: (context) => VillageDetail(
+                                        villageId: json
+                                            .decode(villages[index])["id"])));
                           },
                           child: Container(
                             child: Card(
@@ -115,7 +115,9 @@ class _VillageDashboardState extends State<VillageDashboard> {
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                                  Center(child: Text(  json.decode( villages[index] )["name"]))
+                                  Center(
+                                      child: Text(
+                                          json.decode(villages[index])["name"]))
                                 ],
                               ),
                             ),
@@ -123,7 +125,8 @@ class _VillageDashboardState extends State<VillageDashboard> {
                         );
                       });
                 } else {
-                  return Center(child: Column(
+                  return Center(
+                      child: Column(
                     children: [
                       Text("No villages assigned yet!"),
                       // CircularProgressIndicator(),
