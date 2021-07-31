@@ -33,7 +33,7 @@ class _DetailsState extends State<Details> {
   String state = 'Select State';
   String district = 'Select District';
 
-  final FirebaseDatabase database = SignUp.fb;
+  // final FirebaseDatabase database = SignUp.fb;
 
   // final FirebaseAuth _auth=SignUp.auth;
 
@@ -409,41 +409,41 @@ class _DetailsState extends State<Details> {
   }
 
   Future _uploadInfo(String key) async {
-
-
+    String uid=await AuthService.currentUID;
+    FirebaseDatabase database= await AuthService.databaseInstance;
     database
         .reference()
-        .child(key)
+        .child(uid)
         .child("userDetail")
         .child("Gender")
         .set(dropdownValue);
     database
         .reference()
-        .child(key)
+        .child(uid)
         .child("userDetail")
         .child("Age")
         .set(_age.text);
     database
         .reference()
-        .child(key)
+        .child(uid)
         .child("userDetail")
         .child("Language")
         .set(_language.text);
     database
         .reference()
-        .child(key)
+        .child(uid)
         .child("userDetail")
         .child("Education")
         .set(_education.text);
     database
         .reference()
-        .child(key)
+        .child(uid)
         .child("userDetail")
         .child("State")
         .set(_state.text);
     database
         .reference()
-        .child(key)
+        .child(uid)
         .child("userDetail")
         .child("District")
         .set(_district.text);

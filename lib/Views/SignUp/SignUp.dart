@@ -234,7 +234,7 @@ class SignUp extends StatelessWidget {
                                 ));
                                 return;
                               }
-                              Object result;
+                              String result;
 
                               result = await AuthService.signupUser(
                                   name, email, password, phone);
@@ -242,10 +242,10 @@ class SignUp extends StatelessWidget {
                                   .showSnackBar(SnackBar(
                                 content: Text(result),
                               ));
-                              userKey = AuthService.currentUID.toString();
-
+                              // userKey = AuthService.currentUID.toString();
+                               print("result==$result");
                               if (result == "SUCCESS") {
-                                _uploadDetails(userKey)
+                                _uploadDetails()
                                     .whenComplete(() =>
                                     Navigator.push(
                                       context,
@@ -253,7 +253,6 @@ class SignUp extends StatelessWidget {
                                           builder: (context) => LogIn()),
                                     ));
                               }
-                              ;
                             },
                           ),
                         )),
@@ -287,24 +286,34 @@ class SignUp extends StatelessWidget {
     );
   }
 
-  Future _uploadDetails(String key) async {
-    fb
-        .reference()
-        .child(key)
-        .child("userDetail")
-        .child("name:")
-        .set(_nameController.text);
-    fb
-        .reference()
-        .child(key)
-        .child("userDetail")
-        .child("email:")
-        .set(_emailController.text);
-    fb
-        .reference()
-        .child(key)
-        .child("userDetail")
-        .child("phone:")
-        .set(_phoneController.text);
+  Future<void> _uploadDetails() async {
+    try {
+      String uid=await AuthService.currentUID;
+      FirebaseDatabase database= await AuthService.databaseInstance;
+      print("uid==$uid");
+
+          database.reference()
+          .child(uid)
+          .child("userDetail")
+          .child("name:")
+          .set(_nameController.text);
+      database
+          .reference()
+          .child(uid)
+          .child("userDetail")
+          .child("email:")
+          .set(_emailController.text);
+     database
+          .reference()
+          .child(uid)
+          .child("userDetail")
+          .child("phone:")
+          .set(_phoneController.text);
+      print("uploaded");
+    }
+    catch(e)
+    {
+      print(e.toString());
+    }
   }
 }
