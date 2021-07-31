@@ -260,12 +260,20 @@ class appState extends State<app> {
                             final password = _passwordController.text
                                 .toString()
                                 .trim();
+                            if( email.isEmpty || password.isEmpty){
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content:
+                                Text("Enter valid email & password."),
+                              ));
+                              return;
+                            }
 
                             // FirebaseUser user = await login(email, password);
-                            FirebaseUser user =await AuthService.login(email, password);
+                            String user =await AuthService.login(email, password);
                             CommonFunctions.setSharedPreferences('email',email);
                             if (_key.currentState.validate()) {
-                              if (user != null) {
+                              if (user == "SUCCESS") {
                                 //
                                 // if(seen)
                                 //   {
@@ -287,7 +295,7 @@ class appState extends State<app> {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(
                                   content:
-                                  Text("Not Registered"),
+                                  Text(user),
                                 ));
                               }
                             }

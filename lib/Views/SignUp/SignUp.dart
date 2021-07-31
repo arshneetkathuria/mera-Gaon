@@ -7,14 +7,13 @@ import 'package:govt_survey/Service/FirebaseAuthService.dart';
 import '../Login/LogIn.dart';
 
 class SignUp extends StatelessWidget {
-
   // String name, email, password, phone;
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _phoneController = TextEditingController();
-  static final FirebaseDatabase fb=FirebaseDatabase.instance;
- String userKey;
+  static final FirebaseDatabase fb = FirebaseDatabase.instance;
+  String userKey;
 
 // static get Key=>userKey;
 //   Future<bool> signupUser(String name,String email,String password,String phone)
@@ -45,9 +44,9 @@ class SignUp extends StatelessWidget {
         elevation: 0,
       ),
       body: Container(
-        color:Colors.blue[900],
-        child: Form(child:
-        ListView(
+        color: Colors.blue[900],
+        child: Form(
+            child: ListView(
           children: <Widget>[
             SizedBox(
                 width: double.infinity,
@@ -55,41 +54,42 @@ class SignUp extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(left: 10, right: 10, top: 30),
-                      child: Text(
-                          "Create Account",
+                      child: Text("Create Account",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color:Colors.white
-                          )
-                      ),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                              color: Colors.white)),
                     ),
-
                     Padding(
                         padding: EdgeInsets.only(left: 10, right: 10, top: 20),
                         child: TextFormField(
                           autofocus: true,
                           decoration: InputDecoration(
-                            fillColor: Colors.white,
+                              fillColor: Colors.white,
                               filled: true,
                               labelText: 'Name',
                               hintText: 'Enter your full name',
-                              prefixIcon: Icon(Icons.account_circle_outlined,color: Colors.blue[900],),
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              prefixIcon: Icon(
+                                Icons.account_circle_outlined,
+                                color: Colors.blue[900],
+                              ),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                borderSide: BorderSide(color: Colors.grey,),
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                borderSide: BorderSide(color: Colors.green,),
-                              )
-                          ),
+                                borderSide: BorderSide(
+                                  color: Colors.green,
+                                ),
+                              )),
                           controller: _nameController,
-                        )
-                    ),
-
+                        )),
                     Padding(
                         padding: EdgeInsets.only(left: 10, right: 10, top: 10),
                         child: TextFormField(
@@ -99,22 +99,24 @@ class SignUp extends StatelessWidget {
                               filled: true,
                               labelText: 'Email Id',
                               hintText: 'Enter Email Id or Mobile Number',
-                              prefixIcon: Icon(Icons.mail_outline_rounded,color: Colors.blue[900]),
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              prefixIcon: Icon(Icons.mail_outline_rounded,
+                                  color: Colors.blue[900]),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                borderSide: BorderSide(color: Colors.grey,),
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                borderSide: BorderSide(color: Colors.green,),
-
-                              )
-                          ),
+                                borderSide: BorderSide(
+                                  color: Colors.green,
+                                ),
+                              )),
                           controller: _emailController,
-                        )
-                    ),
-
+                        )),
                     Padding(
                         padding: EdgeInsets.only(left: 10, right: 10, top: 10),
                         child: TextFormField(
@@ -125,21 +127,24 @@ class SignUp extends StatelessWidget {
                               filled: true,
                               labelText: 'Phone Number',
                               hintText: 'Enter Mobile Number',
-                              prefixIcon: Icon(Icons.phone,color: Colors.blue[900]),
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              prefixIcon:
+                                  Icon(Icons.phone, color: Colors.blue[900]),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                borderSide: BorderSide(color: Colors.grey,),
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                borderSide: BorderSide(color: Colors.green,),
-                              )
-                          ),
+                                borderSide: BorderSide(
+                                  color: Colors.green,
+                                ),
+                              )),
                           controller: _phoneController,
-                        )
-                    ),
-
+                        )),
                     Padding(
                         padding: EdgeInsets.only(left: 10, right: 10, top: 10),
                         child: TextFormField(
@@ -150,21 +155,24 @@ class SignUp extends StatelessWidget {
                               filled: true,
                               labelText: 'Password',
                               hintText: 'Enter Your Password',
-                              prefixIcon: Icon(Icons.vpn_key_outlined,color: Colors.blue[900]),
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              prefixIcon: Icon(Icons.vpn_key_outlined,
+                                  color: Colors.blue[900]),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                borderSide: BorderSide(color: Colors.grey,),
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                borderSide: BorderSide(color: Colors.green,),
-                              )
-                          ),
+                                borderSide: BorderSide(
+                                  color: Colors.green,
+                                ),
+                              )),
                           controller: _passwordController,
-                        )
-                    ),
-
+                        )),
                     Padding(
                         padding: EdgeInsets.only(left: 10, right: 10, top: 10),
                         child: TextFormField(
@@ -175,97 +183,128 @@ class SignUp extends StatelessWidget {
                               filled: true,
                               labelText: 'Enter Password again',
                               hintText: 'Re enter your password',
-                              prefixIcon: Icon(Icons.vpn_key_outlined,color: Colors.blue[900]),
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              prefixIcon: Icon(Icons.vpn_key_outlined,
+                                  color: Colors.blue[900]),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                borderSide: BorderSide(color: Colors.grey,),
+                                borderSide: BorderSide(
+                                  color: Colors.grey,
+                                ),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30.0),
-                                borderSide: BorderSide(color: Colors.green,),
-                              )
-                          ),
+                                borderSide: BorderSide(
+                                  color: Colors.green,
+                                ),
+                              )),
                           controller: _passwordController,
-                        )
-                    ),
-
-
+                        )),
                     Padding(
                         padding: EdgeInsets.only(left: 10, right: 20, top: 40),
                         child: Container(
                           width: 300,
                           height: 40,
-                          child:
-                          RaisedButton(child: Text(
-                              'Finish',
-                              style: TextStyle(
-                                color: Colors.blue[900],
-                              )),
+                          child: RaisedButton(
+                            child: Text('Finish',
+                                style: TextStyle(
+                                  color: Colors.blue[900],
+                                )),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)),
                             color: Colors.white,
                             onPressed: () async {
-                              final name = _nameController.text.toString().trim();
-                              var email = _emailController.text.toString().trim();
-                              final password = _passwordController.text.toString()
-                                  .trim();
-                              final phone = _phoneController.text.toString()
-                                  .trim();
+                              final name =
+                                  _nameController.text.toString().trim();
+                              var email =
+                                  _emailController.text.toString().trim();
+                              final password =
+                                  _passwordController.text.toString().trim();
+                              final phone =
+                                  _phoneController.text.toString().trim();
 
-                              bool result =await AuthService.signupUser(name, email, password, phone);
-                              userKey=AuthService.currentUID.toString();
-                              if(result){
-                                _uploadDetails(userKey).whenComplete(() =>  Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => LogIn()),
+                              if (name.isEmpty ||
+                                  email.isEmpty ||
+                                  password.isEmpty ||
+                                  phone.isEmpty) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Text("Please fill all the fields"),
                                 ));
+                                return;
                               }
-                              // ignore: unnecessary_statements
-                              else(){
-                                print("nahi hua");
-                              };
+                              Object result;
+
+                              result = await AuthService.signupUser(
+                                  name, email, password, phone);
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text(result),
+                              ));
+                              userKey = AuthService.currentUID.toString();
+
+                              if (result == "SUCCESS") {
+                                _uploadDetails(userKey)
+                                    .whenComplete(() =>
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LogIn()),
+                                    ));
+                              }
+                              ;
                             },
                           ),
-                        )
-                    ),
-
+                        )),
                     Padding(
                         padding: EdgeInsets.only(left: 10, right: 20, top: 15),
                         child: Container(
                           width: 300,
                           height: 40,
-                          child:
-                          RaisedButton(child: Text(
-                              'Already have a account? login',
-                              style: TextStyle(
-                                color: Colors.blue[900],
-                              )),
+                          child: RaisedButton(
+                            child: Text('Already have a account? login',
+                                style: TextStyle(
+                                  color: Colors.blue[900],
+                                )),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)),
                             color: Colors.white,
                             onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => LogIn()),
-                            );
-
-                            },),))
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LogIn()),
+                              );
+                            },
+                          ),
+                        ))
                   ],
-                )
-            )
+                ))
           ],
-        )
-        ),
+        )),
       ),
     );
   }
 
-
-  Future _uploadDetails(String key) async{
-fb.reference().child(key).child("userDetail").child("name:").set(_nameController.text);
-fb.reference().child(key).child("userDetail").child("email:").set(_emailController.text);
-fb.reference().child(key).child("userDetail").child("phone:").set(_phoneController.text);
-
+  Future _uploadDetails(String key) async {
+    fb
+        .reference()
+        .child(key)
+        .child("userDetail")
+        .child("name:")
+        .set(_nameController.text);
+    fb
+        .reference()
+        .child(key)
+        .child("userDetail")
+        .child("email:")
+        .set(_emailController.text);
+    fb
+        .reference()
+        .child(key)
+        .child("userDetail")
+        .child("phone:")
+        .set(_phoneController.text);
   }
 }

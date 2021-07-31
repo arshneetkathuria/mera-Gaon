@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "382587895832",
-    "project_id": "govt-survey",
-    "storage_bucket": "govt-survey.appspot.com"
+    "project_number": "243218972351",
+    "project_id": "mera-gaon-meri-dharohar",
+    "storage_bucket": "mera-gaon-meri-dharohar.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:382587895832:android:166022665a961202bf036d",
+        "mobilesdk_app_id": "1:243218972351:android:7b9522472dfe57846ed00a",
         "android_client_info": {
           "package_name": "com.meragaonmeridharohar.volunteer_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "382587895832-7o3187u3skn0lhkfeqjr5c9t29pnrv2l.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.meragaonmeridharohar.volunteer_app",
-            "certificate_hash": "7d89d1f15534387db541880adf3d42927d0e1676"
-          }
-        },
-        {
-          "client_id": "382587895832-id4jrl8hift3isl2d7lgmhi8b9g538u7.apps.googleusercontent.com",
+          "client_id": "243218972351-lm66iu9t6f8469bfv3th2e1v4n7m6rt4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCRzHfgekJ-9Po_wSrrdd_HeEMWf_PwhE8"
+          "current_key": "AIzaSyD9xcRhawKyJcbCnLkF_nQPhTqTQWE3hdY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "382587895832-id4jrl8hift3isl2d7lgmhi8b9g538u7.apps.googleusercontent.com",
+              "client_id": "243218972351-lm66iu9t6f8469bfv3th2e1v4n7m6rt4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
