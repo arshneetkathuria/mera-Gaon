@@ -66,8 +66,7 @@ List videos=[];
     }
   }
 
-
-   Widget createCard(String ques,String key,Map<String,dynamic> Detail) {
+  Widget createCard(String ques,String key,Map<String,dynamic> Detail) {
     return Padding(
       padding: EdgeInsets.only(bottom:30),
       child: Card(

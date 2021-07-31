@@ -1,5 +1,4 @@
 //@dart=2.9
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -76,11 +75,14 @@ class _DetailsState extends State<Details> {
                 ///Register once
                 // CommonFunctions.setSharedPreferences(email,"true");
                 setState(() {
-                  userKey = AuthService.currentUID.toString();
+                  AuthService.currentUID.then((value){
+                    userKey = value;
+                    print("UserKey==$userKey");
+                    _uploadInfo(userKey).whenComplete(() => (Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LocationTrack()))));
+                  });
                 });
-                print("UserKey==$userKey");
-                _uploadInfo(userKey).whenComplete(() => (Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LocationTrack()))));
+
               }
             },
           )),
@@ -237,7 +239,7 @@ class _DetailsState extends State<Details> {
                           filled: true,
                           fillColor: Colors.white,
                           labelText: 'Language',
-                          hintText: 'Enter language your know',
+                          hintText: 'Enter language your know (comma separated)',
                           prefixIcon:
                               Icon(Icons.check_circle, color: Colors.blue[900]),
                           floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -260,7 +262,7 @@ class _DetailsState extends State<Details> {
                     child: TextFormField(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return "Please enter your education details";
+                          return "Please enter your education details (comma Separated)";
                         }
                         return null;
                       },
@@ -305,11 +307,43 @@ class _DetailsState extends State<Details> {
                       },
                       items: <String>[
                         'Select State',
-                        'Rajasthan',
-                        'Chhattisgarh',
-                        'Bihar',
-                        'Assam',
-                        'Arunachal Pradesh'
+                        "Andhra Pradesh",
+                        "Arunachal Pradesh",
+                        "Assam",
+                        "Bihar",
+                        "Chhattisgarh",
+                        "Goa",
+                        "Gujarat",
+                        "Haryana",
+                        "Himachal Pradesh",
+                        "Jammu and Kashmir",
+                        "Jharkhand",
+                        "Karnataka",
+                        "Kerala",
+                        "Madhya Pradesh",
+                        "Maharashtra",
+                        "Manipur",
+                        "Meghalaya",
+                        "Mizoram",
+                        "Nagaland",
+                        "Odisha",
+                        "Punjab",
+                        "Rajasthan",
+                        "Sikkim",
+                        "Tamil Nadu",
+                        "Telangana",
+                        "Tripura",
+                        "Uttarakhand",
+                        "Uttar Pradesh",
+                        "West Bengal",
+                        "Andaman and Nicobar Islands",
+                        "Chandigarh",
+                        "Dadra and Nagar Haveli",
+                        "Daman and Diu",
+                        "Delhi",
+                        "Ladakh",
+                        "Lakshadweep",
+                        "Puducherry"
                       ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
@@ -336,11 +370,20 @@ class _DetailsState extends State<Details> {
                       },
                       items: <String>[
                         'Select District',
-                        'Ajmer',
-                        'Alwar',
-                        'Baran',
-                        'Barmer',
-                        'Bharatpur'
+                        "Anantapur",
+                        "Chittoor",
+                        "East Godavari",
+                        "Guntur",
+                        "Krishna",
+                        "Kurnool",
+                        "Nellore",
+                        "Prakasam",
+                        "Srikakulam",
+                        "Visakhapatnam",
+                        "Vizianagaram",
+                        "West Godavari",
+                        "YSR Kadapa",
+
                       ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
@@ -357,6 +400,8 @@ class _DetailsState extends State<Details> {
   }
 
   Future _uploadInfo(String key) async {
+
+
     database
         .reference()
         .child(key)
