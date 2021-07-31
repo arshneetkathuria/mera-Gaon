@@ -136,9 +136,11 @@ class _LocationTrackState extends State<LocationTrack> {
             )),
         actions: [
           GestureDetector(
-            child: Text(
-              "LogOut",
-              style: TextStyle(color: Colors.white),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Icon(Icons.logout)
+              ),
             ),
             onTap: () {
               logOut(context);

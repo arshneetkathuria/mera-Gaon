@@ -55,7 +55,7 @@ class _TraditionState extends State<Tradition> {
       Scaffold(
         backgroundColor: Colors.transparent,
         bottomNavigationBar:
-            Components.setBottomNavigationBar(context, FineArts(villageId: widget.villageId), tradition, widget.villageId.toString()),
+            Components.setBottomNavigationBar(context, FineArts(villageId: widget.villageId), tradition, widget.villageId),
         appBar: AppBar(
           title: Text("Custom & Traditions"),
           backgroundColor: Colors.blue[900],
