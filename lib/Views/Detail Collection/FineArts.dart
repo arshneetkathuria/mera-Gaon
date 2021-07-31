@@ -6,6 +6,8 @@ import 'package:image_picker/image_picker.dart' ;
 import 'Personalities.dart';
 
 class FineArts extends StatefulWidget {
+  final String villageId;
+  FineArts({Key key, @required this.villageId}) : super(key: key);
 
   @override
   _FineArtsState createState() => _FineArtsState();
@@ -26,7 +28,7 @@ ImagePicker picker=new ImagePicker();
         Components.setBackground(),
         Scaffold(
           backgroundColor:Colors.transparent,
-        bottomNavigationBar: Components.setBottomNavigationBar(context, Personalities()),
+        bottomNavigationBar: Components.setBottomNavigationBar(context, Personalities(villageId: widget.villageId), fineArts, widget.villageId.toString()),
           appBar: AppBar(
             title: Text("Fine Arts"),
             backgroundColor: Colors.blue[900],

@@ -6,6 +6,8 @@ import 'FutureAspiration.dart';
 import 'package:image_picker/image_picker.dart';
 
 class DailyLife extends StatefulWidget {
+  final String villageId;
+  DailyLife({Key key, @required this.villageId}) : super(key: key);
 
   @override
   _DailyLifeState createState() => _DailyLifeState();
@@ -28,7 +30,7 @@ class _DailyLifeState extends State<DailyLife> {
         Components.setBackground(),
         Scaffold(
         backgroundColor: Colors.transparent,
-        bottomNavigationBar:Components.setBottomNavigationBar(context, FutureAspiration()),
+        bottomNavigationBar:Components.setBottomNavigationBar(context, FutureAspiration(villageId: widget.villageId), dailyLife, widget.villageId.toString()),
         appBar: AppBar(
           title: Text("Daily Life Details"),
           backgroundColor: Colors.blue[900],

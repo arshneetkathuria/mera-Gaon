@@ -35,7 +35,7 @@ class _VillageDetailState extends State<VillageDetail> {
         Components.setBackground(),
         Scaffold(
           backgroundColor: Colors.transparent,
-          bottomNavigationBar: Components.setBottomNavigationBar(context, Tradition()),
+          bottomNavigationBar: Components.setBottomNavigationBar(context, Tradition(villageId: widget.villageId), villageDetail, widget.villageId),
           appBar: AppBar(
             elevation: 0,
             title: Text("About Village"),
@@ -87,6 +87,8 @@ class _VillageDetailState extends State<VillageDetail> {
 
     );
   }
+
+
 //
 //   Future _uploadDetails(String key) async {
 // SignUp.fb.reference()

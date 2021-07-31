@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'PlaceOfInterest.dart';
 
 class Personalities extends StatefulWidget {
+  final String villageId;
+  Personalities({Key key, @required this.villageId}) : super(key: key);
 
   @override
   _PersonalitiesState createState() => _PersonalitiesState();
@@ -27,7 +29,7 @@ class _PersonalitiesState extends State<Personalities> {
         Components.setBackground(),
         Scaffold(
           backgroundColor: Colors.transparent,
-        bottomNavigationBar:Components.setBottomNavigationBar(context, PlaceOfInterest()),
+        bottomNavigationBar:Components.setBottomNavigationBar(context, PlaceOfInterest(villageId: widget.villageId), personality, widget.villageId.toString()),
         appBar: AppBar(
           actions: [
             IconButton(onPressed: (){

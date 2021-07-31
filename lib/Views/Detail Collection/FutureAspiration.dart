@@ -6,6 +6,9 @@ import 'package:govt_survey/Views/WidgetComponents/Components.dart';
 
 
     class FutureAspiration extends StatelessWidget {
+      final String villageId;
+      FutureAspiration({Key key, @required this.villageId}) : super(key: key);
+
       Layout aspiration = new Layout();
       Map<String, dynamic> aspirationDetail = {};
 

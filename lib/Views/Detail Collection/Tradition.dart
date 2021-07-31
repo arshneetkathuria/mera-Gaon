@@ -8,8 +8,11 @@ import 'package:video_player/video_player.dart';
 import 'FineArts.dart';
 
 class Tradition extends StatefulWidget {
-  static final List<File> _images=[];
-  static get Images=>_images;
+  final String villageId;
+  Tradition({Key key, @required this.villageId}) : super(key: key);
+
+  static final List<File> _images = [];
+  static get Images => _images;
   @override
   _TraditionState createState() => _TraditionState();
 }
@@ -21,19 +24,15 @@ class _TraditionState extends State<Tradition> {
   bool uploading = false;
   double value = 0;
   // static double progressTrack = 1;
-  var name=TextEditingController();
-  Map<String,dynamic> traditionDetail={};
-
+  var name = TextEditingController();
+  Map<String, dynamic> traditionDetail = {};
 
   // String albumName = 'Media';
   // final int maxLine = 5;
   // static List<File> _videos = [];
   // final picker = new ImagePicker();
 
-  Layout tradition=new Layout();
-
-
-
+  Layout tradition = new Layout();
 
   @override
   void initState() {
@@ -43,20 +42,20 @@ class _TraditionState extends State<Tradition> {
 
   @override
   void dispose() {
-   if(_controller!=null) {
-     _controller.dispose();
-   }
+    if (_controller != null) {
+      _controller.dispose();
+    }
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children:[
-        Components.setBackground(),
-        Scaffold(
-          backgroundColor: Colors.transparent,
-        bottomNavigationBar: Components.setBottomNavigationBar(context, FineArts()),
+    return Stack(children: [
+      Components.setBackground(),
+      Scaffold(
+        backgroundColor: Colors.transparent,
+        bottomNavigationBar:
+            Components.setBottomNavigationBar(context, FineArts(villageId: widget.villageId), tradition, widget.villageId.toString()),
         appBar: AppBar(
           title: Text("Custom & Traditions"),
           backgroundColor: Colors.blue[900],
@@ -71,22 +70,30 @@ class _TraditionState extends State<Tradition> {
               )),
         ),
         body: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-    child:Padding(
-    padding: EdgeInsets.only(left: 20, right: 10, top: 40),
-    child: Column(
+          physics: BouncingScrollPhysics(),
+          child: Padding(
+            padding: EdgeInsets.only(left: 20, right: 10, top: 40),
+            child: Column(
               children: [
-                tradition.createMultipleSelection("Folklores practised in the village", 'folklores',traditionDetail),
-                tradition.createMultipleSelection("Rituals and Practices of the villagers", 'rituals',traditionDetail),
-                tradition.createMultipleSelection("Famous dishes prepared in the village along with its recipies", 'dishes',traditionDetail),
+                tradition.createMultipleSelection(
+                    "Folklores practised in the village",
+                    'folklores',
+                    traditionDetail),
+                tradition.createMultipleSelection(
+                    "Rituals and Practices of the villagers",
+                    'rituals',
+                    traditionDetail),
+                tradition.createMultipleSelection(
+                    "Famous dishes prepared in the village along with its recipies",
+                    'dishes',
+                    traditionDetail),
               ],
             ),
           ),
         ),
       ),
-   ] );
+    ]);
   }
-
 
   // Future _uploadPhoto(String key) async {
   //   final _storage = FirebaseStorage.instance;

@@ -6,6 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'DailyLife.dart';
 
 class PlaceOfInterest extends StatefulWidget {
+  final String villageId;
+  PlaceOfInterest({Key key, @required this.villageId}) : super(key: key);
 
   @override
   _PlaceOfInterestState createState() => _PlaceOfInterestState();
@@ -30,7 +32,7 @@ class _PlaceOfInterestState extends State<PlaceOfInterest> {
           Scaffold(
             backgroundColor: Colors.transparent,
             bottomNavigationBar: Components.setBottomNavigationBar(
-                context, DailyLife()),
+                context, DailyLife(villageId: widget.villageId), poi, widget.villageId.toString()),
             appBar: AppBar(
               title: Text("Places Of Interest Details"),
               backgroundColor: Colors.blue[900],
