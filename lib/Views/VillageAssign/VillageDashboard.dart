@@ -58,21 +58,7 @@ class _VillageDashboardState extends State<VillageDashboard> {
                         fontSize: 20),
                   ),
                 )),
-            // GestureDetector(
-            // onTap: () {
-            // Navigator.push(context,
-            // MaterialPageRoute(builder: (context) => VillageDetail()));
-            // },
-            // child: Padding(
-            // padding: EdgeInsets.only(right: 50, bottom: 30),
-            // child: Text(
-            // "Next",
-            // style: TextStyle(
-            // color: Colors.blue[900],
-            // fontWeight: FontWeight.bold,
-            // fontSize: 20),
-            // ),
-            // ))
+
           ],
         ),
         appBar: AppBar(

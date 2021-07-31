@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/services.dart';
 
 class AuthService {
@@ -89,7 +90,7 @@ class AuthService {
 
   //UID
   static Future<String> get currentUID async {
-    return (await (_auth.currentUser())).uid;
+    return (await (_auth.currentUser())).uid.toString();
   }
 
   //Current User
@@ -105,5 +106,10 @@ class AuthService {
       print(e.toString());
       return null;
     }
+  }
+
+  static Future<FirebaseDatabase>get databaseInstance async{
+     final FirebaseDatabase db = FirebaseDatabase.instance;
+     return db;
   }
 }
