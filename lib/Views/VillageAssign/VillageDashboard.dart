@@ -82,9 +82,10 @@ class _VillageDashboardState extends State<VillageDashboard> {
                 if (snapshot.hasData) {
                   List<String> villages = [];
                   List villagesList = snapshot.data as List;
-                  Map v = snapshot.data as Map;
-                  v.forEach((key, value) {
-                    villages.add(value);
+                  //Map v = snapshot.data as Map;
+                  villagesList.forEach((value) {
+
+                    villages.add( jsonEncode(value));
                   });
                   return GridView.builder(
                       shrinkWrap: true,
@@ -114,7 +115,7 @@ class _VillageDashboardState extends State<VillageDashboard> {
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                                  Center(child: Text(villages[index]))
+                                  Center(child: Text(  json.decode( villages[index] )["name"]))
                                 ],
                               ),
                             ),
