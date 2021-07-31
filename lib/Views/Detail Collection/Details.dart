@@ -137,20 +137,23 @@ class _DetailsState extends State<Details> {
                       color: Colors.white,
                     ),
                     width: MediaQuery.of(context).size.width,
-                    child: DropdownButton<String>(
-                      value: dropdownValue,
-                      onChanged: (String newValue) {
-                        setState(() {
-                          dropdownValue = newValue;
-                        });
-                      },
-                      items: <String>['Gender', 'Male', 'Female']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:20.0),
+                      child: DropdownButton<String>(
+                        value: dropdownValue,
+                        onChanged: (String newValue) {
+                          setState(() {
+                            dropdownValue = newValue;
+                          });
+                        },
+                        items: <String>['Gender', 'Male', 'Female']
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
                 ),
@@ -298,58 +301,61 @@ class _DetailsState extends State<Details> {
                       color: Colors.white,
                     ),
                     width: MediaQuery.of(context).size.width,
-                    child: DropdownButton<String>(
-                      value: state,
-                      onChanged: (String newValue) {
-                        setState(() {
-                          state = newValue;
-                        });
-                      },
-                      items: <String>[
-                        'Select State',
-                        "Andhra Pradesh",
-                        "Arunachal Pradesh",
-                        "Assam",
-                        "Bihar",
-                        "Chhattisgarh",
-                        "Goa",
-                        "Gujarat",
-                        "Haryana",
-                        "Himachal Pradesh",
-                        "Jammu and Kashmir",
-                        "Jharkhand",
-                        "Karnataka",
-                        "Kerala",
-                        "Madhya Pradesh",
-                        "Maharashtra",
-                        "Manipur",
-                        "Meghalaya",
-                        "Mizoram",
-                        "Nagaland",
-                        "Odisha",
-                        "Punjab",
-                        "Rajasthan",
-                        "Sikkim",
-                        "Tamil Nadu",
-                        "Telangana",
-                        "Tripura",
-                        "Uttarakhand",
-                        "Uttar Pradesh",
-                        "West Bengal",
-                        "Andaman and Nicobar Islands",
-                        "Chandigarh",
-                        "Dadra and Nagar Haveli",
-                        "Daman and Diu",
-                        "Delhi",
-                        "Ladakh",
-                        "Lakshadweep",
-                        "Puducherry"
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left:20.0),
+                      child: DropdownButton<String>(
+                        value: state,
+                        onChanged: (String newValue) {
+                          setState(() {
+                            state = newValue;
+                          });
+                        },
+                        items: <String>[
+                          'Select State',
+                          "Andhra Pradesh",
+                          "Arunachal Pradesh",
+                          "Assam",
+                          "Bihar",
+                          "Chhattisgarh",
+                          "Goa",
+                          "Gujarat",
+                          "Haryana",
+                          "Himachal Pradesh",
+                          "Jammu and Kashmir",
+                          "Jharkhand",
+                          "Karnataka",
+                          "Kerala",
+                          "Madhya Pradesh",
+                          "Maharashtra",
+                          "Manipur",
+                          "Meghalaya",
+                          "Mizoram",
+                          "Nagaland",
+                          "Odisha",
+                          "Punjab",
+                          "Rajasthan",
+                          "Sikkim",
+                          "Tamil Nadu",
+                          "Telangana",
+                          "Tripura",
+                          "Uttarakhand",
+                          "Uttar Pradesh",
+                          "West Bengal",
+                          "Andaman and Nicobar Islands",
+                          "Chandigarh",
+                          "Dadra and Nagar Haveli",
+                          "Daman and Diu",
+                          "Delhi",
+                          "Ladakh",
+                          "Lakshadweep",
+                          "Puducherry"
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
                 ),
@@ -361,35 +367,38 @@ class _DetailsState extends State<Details> {
                       color: Colors.white,
                     ),
                     width: MediaQuery.of(context).size.width,
-                    child: DropdownButton<String>(
-                      value: district,
-                      onChanged: (String newValue) {
-                        setState(() {
-                          district = newValue;
-                        });
-                      },
-                      items: <String>[
-                        'Select District',
-                        "Anantapur",
-                        "Chittoor",
-                        "East Godavari",
-                        "Guntur",
-                        "Krishna",
-                        "Kurnool",
-                        "Nellore",
-                        "Prakasam",
-                        "Srikakulam",
-                        "Visakhapatnam",
-                        "Vizianagaram",
-                        "West Godavari",
-                        "YSR Kadapa",
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: DropdownButton<String>(
+                        value: district,
+                        onChanged: (String newValue) {
+                          setState(() {
+                            district = newValue;
+                          });
+                        },
+                        items: <String>[
+                          'Select District',
+                          "Anantapur",
+                          "Chittoor",
+                          "East Godavari",
+                          "Guntur",
+                          "Krishna",
+                          "Kurnool",
+                          "Nellore",
+                          "Prakasam",
+                          "Srikakulam",
+                          "Visakhapatnam",
+                          "Vizianagaram",
+                          "West Godavari",
+                          "YSR Kadapa",
 
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
                 ),
