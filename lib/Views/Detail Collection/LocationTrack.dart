@@ -1,13 +1,14 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:govt_survey/VillageAssign/VillageDashboard.dart';
-import '../SignUp.dart';
-import 'VillageDetail.dart';
+import 'package:govt_survey/Service/FirebaseAuthService.dart';
+import 'package:govt_survey/Views/Home/home.dart';
+import 'package:govt_survey/Views/VillageAssign/VillageDashboard.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../SignUp/SignUp.dart';
 
 class LocationTrack extends StatefulWidget {
   @override
@@ -15,6 +16,14 @@ class LocationTrack extends StatefulWidget {
 }
 
 class _LocationTrackState extends State<LocationTrack> {
+
+  logOut(BuildContext context)
+  async {
+    var pref=await SharedPreferences.getInstance();
+    pref.remove('email');
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+
+  }
   late Position currentPosition;
   Completer<GoogleMapController> _controllerGoogleMap=Completer();
   Set<Marker> markers={};
@@ -54,8 +63,8 @@ getAddress(latLng);
 
   void getAddress(LatLng latlng) async
   {
-    FirebaseUser user=await SignUp.auth.currentUser();
-    var userId=user.uid;
+    // FirebaseUser user=await SignUp.auth.currentUser();
+    var userId=AuthService.currentUID.toString();
 
     placemarks=await placemarkFromCoordinates(latlng.latitude,latlng.longitude);
     var ref=SignUp.fb.reference().child(userId).child("Location");
@@ -114,11 +123,21 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=>VillageDashboard()
             onTap: () {
               Navigator.pop(context);
             },
+
             child: Icon(
               Icons.chevron_left,
               color: Colors.white,
               size: 30,
             )),
+        actions: [
+          GestureDetector(
+            child: Text("LogOut",style: TextStyle(color:Colors.white),),
+            onTap: ()
+            {
+              logOut(context);
+            },
+          )
+        ],
       ),
       body: Container(
         padding: EdgeInsets.only(left: 20, right: 10, top: 40),

@@ -1,4 +1,4 @@
-package com.example.govt_survey
+package com.meragaonmeridharohar.volunteer_app
 
 import io.flutter.embedding.android.FlutterActivity
 

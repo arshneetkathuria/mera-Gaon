@@ -2,8 +2,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:govt_survey/Service/FirebaseAuthService.dart';
 
-import 'LogIn.dart';
+import '../Login/LogIn.dart';
 
 class SignUp extends StatelessWidget {
 
@@ -12,23 +13,22 @@ class SignUp extends StatelessWidget {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _phoneController = TextEditingController();
-  static final FirebaseAuth auth=FirebaseAuth.instance;
   static final FirebaseDatabase fb=FirebaseDatabase.instance;
  String userKey;
 
 // static get Key=>userKey;
-  Future<bool> signupUser(String name,String email,String password,String phone)
-  async{
-    try{
-      AuthResult result = await auth.createUserWithEmailAndPassword(email: email, password: password);
-      FirebaseUser user = result.user;
-      return true;
-    }
-    catch(e){
-      print("Error==$e");
-      return false;
-    }
-  }
+//   Future<bool> signupUser(String name,String email,String password,String phone)
+//   async{
+//     try{
+//       AuthResult result = await auth.createUserWithEmailAndPassword(email: email, password: password);
+//       FirebaseUser user = result.user;
+//       return true;
+//     }
+//     catch(e){
+//       print("Error==$e");
+//       return false;
+//     }
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -213,9 +213,8 @@ class SignUp extends StatelessWidget {
                               final phone = _phoneController.text.toString()
                                   .trim();
 
-                              bool result =await signupUser(name, email, password, phone);
-                              final FirebaseUser user=await auth.currentUser();
-                              userKey=user.uid;
+                              bool result =await AuthService.signupUser(name, email, password, phone);
+                              userKey=AuthService.currentUID.toString();
                               if(result){
                                 _uploadDetails(userKey).whenComplete(() =>  Navigator.push(
                                   context,

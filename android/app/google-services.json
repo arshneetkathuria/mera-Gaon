@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:382587895832:android:166022665a961202bf036d",
         "android_client_info": {
-          "package_name": "com.example.govt_survey"
+          "package_name": "com.meragaonmeridharohar.volunteer_app"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "382587895832-7o3187u3skn0lhkfeqjr5c9t29pnrv2l.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.govt_survey",
+            "package_name": "com.meragaonmeridharohar.volunteer_app",
             "certificate_hash": "7d89d1f15534387db541880adf3d42927d0e1676"
           }
         },

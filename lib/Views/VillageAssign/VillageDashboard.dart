@@ -2,13 +2,11 @@ import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-
-// import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:govt_survey/Detail%20Collection/Tradition.dart';
-import 'package:govt_survey/Detail%20Collection/VillageDetail.dart';
-import 'package:govt_survey/SignUp.dart';
+import 'package:govt_survey/Service/FirebaseAuthService.dart';
+import 'package:govt_survey/Views/SignUp/SignUp.dart';
+import 'package:govt_survey/Views/Detail%20Collection/Tradition.dart';
+import 'package:govt_survey/Views/Detail%20Collection/VillageDetail.dart';
 
 class VillageDashboard extends StatefulWidget {
   const VillageDashboard({Key? key}) : super(key: key);
@@ -24,7 +22,7 @@ class _VillageDashboardState extends State<VillageDashboard> {
 
 
   static Future getVillages() async {
-    FirebaseUser user = await SignUp.auth.currentUser();
+    FirebaseUser user = await AuthService.currentUser;
     userId = user.uid;
     print("id=$userId");
   return await db
@@ -66,21 +64,21 @@ class _VillageDashboardState extends State<VillageDashboard> {
     fontSize: 20),
     ),
     )),
-    GestureDetector(
-    onTap: () {
-    Navigator.push(context,
-    MaterialPageRoute(builder: (context) => VillageDetail()));
-    },
-    child: Padding(
-    padding: EdgeInsets.only(right: 50, bottom: 30),
-    child: Text(
-    "Next",
-    style: TextStyle(
-    color: Colors.blue[900],
-    fontWeight: FontWeight.bold,
-    fontSize: 20),
-    ),
-    ))
+    // GestureDetector(
+    // onTap: () {
+    // Navigator.push(context,
+    // MaterialPageRoute(builder: (context) => VillageDetail()));
+    // },
+    // child: Padding(
+    // padding: EdgeInsets.only(right: 50, bottom: 30),
+    // child: Text(
+    // "Next",
+    // style: TextStyle(
+    // color: Colors.blue[900],
+    // fontWeight: FontWeight.bold,
+    // fontSize: 20),
+    // ),
+    // ))
     ],
     ),
     appBar: AppBar(

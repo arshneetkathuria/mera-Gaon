@@ -4,21 +4,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:govt_survey/Service/FirebaseAuthService.dart';
+import 'package:govt_survey/Service/common_functions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../SignUp.dart';
-import '../SignUp.dart';
+import '../SignUp/SignUp.dart';
 import 'LocationTrack.dart';
 
 class Details extends StatefulWidget {
-static String userKey;
-static String get Key=>userKey;
+  static String userKey;
+
+  static String get Key => userKey;
 
   @override
   _DetailsState createState() => _DetailsState(userKey);
 }
 
 class _DetailsState extends State<Details> {
- String userKey;
+  String userKey;
   final _nameController = TextEditingController();
   final _phone = TextEditingController();
   final _age = TextEditingController();
@@ -28,13 +31,27 @@ class _DetailsState extends State<Details> {
   final _state = TextEditingController();
   final formKey = GlobalKey<FormState>();
   String dropdownValue = 'Gender';
-  String state='Select State';
-  String district='Select District';
+  String state = 'Select State';
+  String district = 'Select District';
 
-  final FirebaseDatabase database=SignUp.fb;
-  final FirebaseAuth _auth=SignUp.auth;
+  final FirebaseDatabase database = SignUp.fb;
+
+  // final FirebaseAuth _auth=SignUp.auth;
 
   _DetailsState(String userKey);
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _language.dispose();
+    _phone.dispose();
+    _age.dispose();
+    _education.dispose();
+    _district.dispose();
+    _state.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,14 +68,18 @@ class _DetailsState extends State<Details> {
                 style: TextStyle(fontSize: 20, color: Colors.blue[900])),
             color: Colors.white,
             onPressed: () async {
+
               if (formKey.currentState.validate()) {
-                FirebaseUser user=await _auth.currentUser();
+                // FirebaseUser user=await _auth.currentUser();
+                var email=await CommonFunctions.getSharedPreferences('email');
+
+                ///Register once
+                // CommonFunctions.setSharedPreferences(email,"true");
                 setState(() {
-                  userKey=user.uid;
+                  userKey = AuthService.currentUID.toString();
                 });
                 print("UserKey==$userKey");
-                _uploadInfo(userKey).whenComplete(() =>(
-                    Navigator.push(context,
+                _uploadInfo(userKey).whenComplete(() => (Navigator.push(context,
                     MaterialPageRoute(builder: (context) => LocationTrack()))));
               }
             },
@@ -282,8 +303,14 @@ class _DetailsState extends State<Details> {
                           state = newValue;
                         });
                       },
-                      items: <String>['Select State', 'Rajasthan', 'Chhattisgarh','Bihar','Assam','Arunachal Pradesh']
-                          .map<DropdownMenuItem<String>>((String value) {
+                      items: <String>[
+                        'Select State',
+                        'Rajasthan',
+                        'Chhattisgarh',
+                        'Bihar',
+                        'Assam',
+                        'Arunachal Pradesh'
+                      ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),
@@ -292,7 +319,7 @@ class _DetailsState extends State<Details> {
                     ),
                   ),
                 ),
-                  Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 10, right: 10, top: 10),
                   child: Container(
                     decoration: BoxDecoration(
@@ -307,8 +334,14 @@ class _DetailsState extends State<Details> {
                           district = newValue;
                         });
                       },
-                      items: <String>['Select District', 'Ajmer', 'Alwar','Baran','Barmer','Bharatpur']
-                          .map<DropdownMenuItem<String>>((String value) {
+                      items: <String>[
+                        'Select District',
+                        'Ajmer',
+                        'Alwar',
+                        'Baran',
+                        'Barmer',
+                        'Bharatpur'
+                      ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),
@@ -323,14 +356,58 @@ class _DetailsState extends State<Details> {
     );
   }
 
-  Future _uploadInfo(String key) async
-  {
-    database.reference().child(key).child("userDetail").child("Gender").set(dropdownValue);
-    database.reference().child(key).child("userDetail").child("Age").set(_age.text);
-    database.reference().child(key).child("userDetail").child("Language").set(_language.text);
-    database.reference().child(key).child("userDetail").child("Education").set(_education.text);
-    database.reference().child(key).child("userDetail").child("State").set(_state.text);
-    database.reference().child(key).child("userDetail").child("District").set(_district.text);
-
+  Future _uploadInfo(String key) async {
+    database
+        .reference()
+        .child(key)
+        .child("userDetail")
+        .child("Gender")
+        .set(dropdownValue);
+    database
+        .reference()
+        .child(key)
+        .child("userDetail")
+        .child("Age")
+        .set(_age.text);
+    database
+        .reference()
+        .child(key)
+        .child("userDetail")
+        .child("Language")
+        .set(_language.text);
+    database
+        .reference()
+        .child(key)
+        .child("userDetail")
+        .child("Education")
+        .set(_education.text);
+    database
+        .reference()
+        .child(key)
+        .child("userDetail")
+        .child("State")
+        .set(_state.text);
+    database
+        .reference()
+        .child(key)
+        .child("userDetail")
+        .child("District")
+        .set(_district.text);
   }
+  //
+  // checkFirstSeen() async {
+  //   SharedPreferences pref = await SharedPreferences.getInstance();
+  //   bool seen = (pref.getBool('seen')) ?? false;
+  //   print("screenVisited==$seen");
+  //
+  //
+  //   if (seen) {
+  //     Navigator.pushReplacement(
+  //         context, MaterialPageRoute(builder: (context) => LocationTrack()));
+  //   } else {
+  //     pref.setBool('seen', true);
+  //     Navigator.pushReplacement(
+  //         context, MaterialPageRoute(builder: (context) => Details()));
+  //   }
+  // }
 }
