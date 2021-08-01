@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:govt_survey/LayoutComponents/Layout.dart';
 import 'package:govt_survey/Service/FirebaseAuthService.dart';
-import 'package:govt_survey/Views/LayoutComponents/Layout.dart';
 import 'package:govt_survey/Views/VillageAssign/VillageDashboard.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -67,7 +67,7 @@ class Components {
                     .reference()
                     .child("Villages")
                     .child(villageId)
-                    .set( villageDetail.getFormData()  )
+                    .set( villageDetail.getFormData())
                     .then((value) {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => nextRoute));

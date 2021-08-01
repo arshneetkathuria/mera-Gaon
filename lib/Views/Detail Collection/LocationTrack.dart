@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -59,7 +60,8 @@ class _LocationTrackState extends State<LocationTrack> {
     AuthService.currentUID.then((value) async {
       placemarks =
           await placemarkFromCoordinates(latlng.latitude, latlng.longitude);
-      var ref = SignUp.fb.reference().child(value).child("Location");
+      FirebaseDatabase database=await AuthService.databaseInstance;
+      var ref =database.reference().child(value).child("Location");
       ref.child("street").set(placemarks[0].street);
       ref.child("Country").set(placemarks[0].country);
       ref.child("PostalCode").set(placemarks[0].postalCode);

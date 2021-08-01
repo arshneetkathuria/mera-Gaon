@@ -1,8 +1,8 @@
 //@dart=2.9
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:govt_survey/Views/LayoutComponents/Layout.dart';
-import 'package:govt_survey/Views/WidgetComponents/Components.dart';
+import 'package:govt_survey/LayoutComponents/Layout.dart';
+import 'package:govt_survey/WidgetComponents/Components.dart';
 import 'package:image_picker/image_picker.dart';
 import 'PlaceOfInterest.dart';
 

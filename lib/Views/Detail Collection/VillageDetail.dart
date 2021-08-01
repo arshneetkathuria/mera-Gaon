@@ -2,9 +2,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:govt_survey/LayoutComponents/Layout.dart';
 import 'package:govt_survey/Service/common_functions.dart';
-import 'package:govt_survey/Views/LayoutComponents/Layout.dart';
-import 'package:govt_survey/Views/WidgetComponents/Components.dart';
+import 'package:govt_survey/WidgetComponents/Components.dart';
 
 import 'Tradition.dart';
 
@@ -78,6 +78,7 @@ class _VillageDetailState extends State<VillageDetail> {
                   villageDetail.createCard("When did electricity come to the village?","electricity_established",_villageDetail),
                   villageDetail.createCard("When did drinking water come to the village?","drinking_water_introduced",_villageDetail),
                   villageDetail.createCard("When did internet come to the village?","internet_introduced",_villageDetail),
+
                 ],
               ),
             ),
@@ -86,6 +87,10 @@ class _VillageDetailState extends State<VillageDetail> {
       ],
 
     );
+  }
+
+  Future uploadDetails() async{
+
   }
 
 
@@ -103,7 +108,5 @@ class _VillageDetailState extends State<VillageDetail> {
 //         .child("History")
 //         .set(history_of_village.text);
 //   }
-  Future _uploadDetails(String key) async{
 
-  }
 }

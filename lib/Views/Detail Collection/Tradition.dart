@@ -2,8 +2,8 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:govt_survey/Views/LayoutComponents/Layout.dart';
-import 'package:govt_survey/Views/WidgetComponents/Components.dart';
+import 'package:govt_survey/LayoutComponents/Layout.dart';
+import 'package:govt_survey/WidgetComponents/Components.dart';
 import 'package:video_player/video_player.dart';
 import 'FineArts.dart';
 

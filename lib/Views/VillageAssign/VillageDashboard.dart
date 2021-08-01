@@ -17,14 +17,16 @@ class VillageDashboard extends StatefulWidget {
 
 class _VillageDashboardState extends State<VillageDashboard> {
   static final db = SignUp.fb.reference();
-  static var userId;
   List images = Tradition.Images;
 
   static Future getVillages() async {
-    FirebaseUser user = await AuthService.currentUser;
-    userId = user.uid;
-    print("id=$userId");
-    return await db.child(userId).child("villageAssigned").once();
+    // FirebaseUser user = await AuthService.currentUser;
+    // userId = user.uid;
+    FirebaseDatabase database=await AuthService.databaseInstance;
+    String uid=await AuthService.currentUID;
+    print("id=$uid");
+    return await database.reference().child(uid).child("villageAssigned").once();
+    // print("DetailValue=${detail.value}");
 
     // return villages;
     // print(villages);
@@ -33,7 +35,6 @@ class _VillageDashboardState extends State<VillageDashboard> {
   @override
   initState() {
     // print(images.length);
-
     super.initState();
   }
 
@@ -85,6 +86,7 @@ class _VillageDashboardState extends State<VillageDashboard> {
                   villagesList.forEach((value) {
                     villages.add(jsonEncode(value));
                   });
+                  print("villages==$villages");
                   return GridView.builder(
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -100,7 +102,7 @@ class _VillageDashboardState extends State<VillageDashboard> {
                                 MaterialPageRoute(
                                     builder: (context) => VillageDetail(
                                         villageId: json
-                                            .decode(villages[index])["id"])));
+                                            .decode(villages[index])["id"].toString())));
                           },
                           child: Container(
                             child: Card(
